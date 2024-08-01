@@ -32,11 +32,7 @@ class CustomPromise {
 
 	then(onFulfilled, onRejected) {
 		return new CustomPromise((resolve, reject) => {
-<<<<<<< HEAD
 			const handler = () => {
-=======
-			const handler = result => {
->>>>>>> 8368982c89107910259d04a13e5e9193baee4be2
 				try {
 					if (this.#state === 'fulfilled') {
 						const result = onFulfilled
@@ -44,17 +40,12 @@ class CustomPromise {
 							: this.#result
 						resolve(result)
 					} else {
-<<<<<<< HEAD
 						if (onRejected) {
 							const result = onRejected(this.#result)
 							resolve(result)
 						} else {
 							reject(this.#result)
 						}
-=======
-						const result = onRejected ? onRejected(this.#result) : this.#result
-						resolve(result)
->>>>>>> 8368982c89107910259d04a13e5e9193baee4be2
 					}
 				} catch (error) {
 					reject(error)
@@ -64,11 +55,7 @@ class CustomPromise {
 			if (this.#state === 'pending') {
 				this.#handlers.push(handler)
 			} else {
-<<<<<<< HEAD
 				handler()
-=======
-				handler(this.#result)
->>>>>>> 8368982c89107910259d04a13e5e9193baee4be2
 			}
 		})
 	}
