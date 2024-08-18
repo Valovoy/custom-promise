@@ -61,6 +61,19 @@ class CustomPromise {
 	}
 
 	catch(onRejected) {
-		this.then(null, onRejected)
+		return this.then(null, onRejected)
+	}
+
+	finally(handler) {
+		return this.then(
+			result => {
+				handler()
+				return result
+			},
+			error => {
+				handler()
+				throw error
+			}
+		)
 	}
 }
